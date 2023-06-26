@@ -56,7 +56,8 @@ def get_all_posts():
 
 @app.route("/post/<int:index>")
 def show_post(index):
-    posts = BlogPost.query.get(index)
+    # posts = BlogPost.query.get(index)
+    posts = db.session.get(BlogPost, index)
     return render_template("post.html", post=posts)
 
 
