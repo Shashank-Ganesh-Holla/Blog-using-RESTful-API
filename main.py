@@ -49,6 +49,7 @@ class CreatePostForm(FlaskForm):
 def get_all_posts():
     if not os.path.exists('posts.db'):
         db.create_all()
+        db.session.commit()
     posts = BlogPost.query.all()
     return render_template("index.html", all_posts=posts)
 
